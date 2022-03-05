@@ -75,7 +75,7 @@
     <ClCompile Include="fmt\src\os.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="defines.cpp">
+    <ClCompile Include="defines.h">
       <Filter>Helpers</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,6 +9,8 @@ std::shared_ptr<CVarManagerWrapper> _globalCvarManager;
 void SixMansPlugin::onLoad()
 {
 	_globalCvarManager = cvarManager;
+
+	Var(int, test, 5, "test");
 	//cvarManager->log("Plugin loaded!");
 
 	//cvarManager->registerNotifier("my_aweseome_notifier", [&](std::vector<std::string> args) {
