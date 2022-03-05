@@ -92,6 +92,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="defines.cpp" />
     <ClCompile Include="fmt\src\format.cc" />
     <ClCompile Include="fmt\src\os.cc" />
     <ClCompile Include="imgui\imgui.cpp" />

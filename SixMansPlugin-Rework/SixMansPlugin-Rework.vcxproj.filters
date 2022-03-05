@@ -22,6 +22,9 @@
     <Filter Include="imgui\implementation">
       <UniqueIdentifier>{d46c4711-0bdc-484c-bb4c-5526d80f7f5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{e5b62baf-46ec-4bac-9a96-a759ffa611c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SixMansPlugin-Rework.cpp">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="fmt\src\os.cc">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="defines.cpp">
+      <Filter>Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
