@@ -2,11 +2,11 @@
 #include "SixMansPlugin-Rework.h"
 
 
-BAKKESMOD_PLUGIN(SixMansPlugin-Rework, "write a plugin description here", plugin_version, PLUGINTYPE_FREEPLAY)
+BAKKESMOD_PLUGIN(SixMansPlugin, "write a plugin description here", plugin_version, PLUGINTYPE_FREEPLAY)
 
 std::shared_ptr<CVarManagerWrapper> _globalCvarManager;
 
-void SixMansPlugin-Rework::onLoad()
+void SixMansPlugin::onLoad()
 {
 	_globalCvarManager = cvarManager;
 	//cvarManager->log("Plugin loaded!");
@@ -43,6 +43,6 @@ void SixMansPlugin-Rework::onLoad()
 	//gameWrapper->HookEvent("Function TAGame.Ball_TA.Explode", std::bind(&SixMansPlugin-Rework::YourPluginMethod, this);
 }
 
-void SixMansPlugin-Rework::onUnload()
+void SixMansPlugin::onUnload()
 {
 }

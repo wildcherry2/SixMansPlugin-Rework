@@ -2,25 +2,25 @@
 #include "SixMansPlugin-Rework.h"
 
 /* Plugin Settings Window code here
-std::string SixMansPlugin-Rework::GetPluginName() {
-	return "SixMansPlugin-Rework";
+std::string SixMansPlugin::GetPluginName() {
+	return "SixMansPlugin";
 }
 
-void SixMansPlugin-Rework::SetImGuiContext(uintptr_t ctx) {
+void SixMansPlugin::SetImGuiContext(uintptr_t ctx) {
 	ImGui::SetCurrentContext(reinterpret_cast<ImGuiContext*>(ctx));
 }
 
 // Render the plugin settings here
 // This will show up in bakkesmod when the plugin is loaded at
 //  f2 -> plugins -> SixMansPlugin-Rework
-void SixMansPlugin-Rework::RenderSettings() {
+void SixMansPlugin::RenderSettings() {
 	ImGui::TextUnformatted("SixMansPlugin-Rework plugin settings");
 }
 */
 
 /*
 // Do ImGui rendering here
-void SixMansPlugin-Rework::Render()
+void SixMansPlugin::Render()
 {
 	if (!ImGui::Begin(menuTitle_.c_str(), &isWindowOpen_, ImGuiWindowFlags_None))
 	{
@@ -38,43 +38,43 @@ void SixMansPlugin-Rework::Render()
 }
 
 // Name of the menu that is used to toggle the window.
-std::string SixMansPlugin-Rework::GetMenuName()
+std::string SixMansPluginGetMenuName()
 {
 	return "SixMansPlugin-Rework";
 }
 
 // Title to give the menu
-std::string SixMansPlugin-Rework::GetMenuTitle()
+std::string SixMansPlugin::GetMenuTitle()
 {
 	return menuTitle_;
 }
 
 // Don't call this yourself, BM will call this function with a pointer to the current ImGui context
-void SixMansPlugin-Rework::SetImGuiContext(uintptr_t ctx)
+void SixMansPlugin::SetImGuiContext(uintptr_t ctx)
 {
 	ImGui::SetCurrentContext(reinterpret_cast<ImGuiContext*>(ctx));
 }
 
 // Should events such as mouse clicks/key inputs be blocked so they won't reach the game
-bool SixMansPlugin-Rework::ShouldBlockInput()
+bool SixMansPlugin::ShouldBlockInput()
 {
 	return ImGui::GetIO().WantCaptureMouse || ImGui::GetIO().WantCaptureKeyboard;
 }
 
 // Return true if window should be interactive
-bool SixMansPlugin-Rework::IsActiveOverlay()
+bool SixMansPlugin::IsActiveOverlay()
 {
 	return true;
 }
 
 // Called when window is opened
-void SixMansPlugin-Rework::OnOpen()
+void SixMansPlugin::OnOpen()
 {
 	isWindowOpen_ = true;
 }
 
 // Called when window is closed
-void SixMansPlugin-Rework::OnClose()
+void SixMansPlugin::OnClose()
 {
 	isWindowOpen_ = false;
 }
