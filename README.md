@@ -12,6 +12,7 @@
 		*	Local server ip
 		*	Default region
 		*	Show lobby info on toast option
+		*	Auto tab-in once server receives lobby info
 	*	Toast notification
 		*	Button for join/create
 		*	Timers for retry
