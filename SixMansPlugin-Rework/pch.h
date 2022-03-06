@@ -9,6 +9,9 @@
 #include <functional>
 #include <memory>
 #include <Windows.h>
+#include <thread>
+#include <fstream>
+#include <iostream>
 
 #include "imgui/imgui.h"
 

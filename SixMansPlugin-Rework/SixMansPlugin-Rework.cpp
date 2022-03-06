@@ -2,7 +2,7 @@
 #include "SixMansPlugin-Rework.h"
 
 
-BAKKESMOD_PLUGIN(SixMansPlugin, "write a plugin description here", plugin_version, PLUGINTYPE_FREEPLAY)
+BAKKESMOD_PLUGIN(SixMansPlugin, "Six Mans Plugin", plugin_version, PLUGINTYPE_FREEPLAY)
 
 std::shared_ptr<CVarManagerWrapper> _globalCvarManager;
 

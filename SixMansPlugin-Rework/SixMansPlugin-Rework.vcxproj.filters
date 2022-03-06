@@ -78,6 +78,9 @@
     <ClCompile Include="defines.h">
       <Filter>Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="logsys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SixMansPlugin-Rework.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="consts.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="logsys.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
