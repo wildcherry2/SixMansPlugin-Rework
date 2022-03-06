@@ -18,6 +18,8 @@
 #include "fmt/core.h"
 #include "fmt/ranges.h"
 
+#include "../Simple-Web-Server/server_http.hpp"
+
 extern std::shared_ptr<CVarManagerWrapper> _globalCvarManager;
 
 template<typename S, typename... Args>

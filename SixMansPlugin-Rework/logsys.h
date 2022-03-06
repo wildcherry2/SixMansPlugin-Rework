@@ -7,6 +7,7 @@ class LogSys {
 	std::ofstream out_stream;
 
 public:
+	LogSys(){}
 	LogSys(std::filesystem::path folder);
 	void SpawnConsole();
 	void Log(std::string& str);

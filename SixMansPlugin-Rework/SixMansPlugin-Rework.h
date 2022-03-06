@@ -7,6 +7,7 @@
 #include "version.h"
 #include "defines.h"
 #include "consts.h"
+#include "logsys.h"
 constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
 
 
@@ -18,6 +19,8 @@ class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin/*, public BakkesM
 	//Boilerplate
 	virtual void onLoad();
 	virtual void onUnload();
+
+	LogSys logsys;
 
 	// Inherited via PluginSettingsWindow
 	/*
