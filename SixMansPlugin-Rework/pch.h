@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma warning(disable: 5104 5105 4099 4267 4305 4244)
 #define WIN32_LEAN_AND_MEAN
 #define _CRT_SECURE_NO_WARNINGS
 #include "bakkesmod/plugin/bakkesmodplugin.h"
@@ -19,6 +19,8 @@
 #include "fmt/ranges.h"
 
 #include "../Simple-Web-Server/server_http.hpp"
+
+
 
 extern std::shared_ptr<CVarManagerWrapper> _globalCvarManager;
 
