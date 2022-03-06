@@ -4,7 +4,7 @@
 
 class Listener {
 	SimpleWeb::Server<SimpleWeb::HTTP> listener_server;
-	SixMansPlugin* plugin;
+	SixMansPlugin* plugin = nullptr;
 	unsigned int port = 6969;
 
 public:

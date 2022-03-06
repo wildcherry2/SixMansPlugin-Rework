@@ -10,15 +10,21 @@ extern std::thread server_thread;
 Listener::Listener(SixMansPlugin* plugin, unsigned int port) {
 	this->plugin = plugin;
 	this->port = port;
-	//(*ggw)->GetBakkesModPath();
+
 }
 
 void Listener::AddResource(std::string& url, std::string& method, std::function<void(std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Response> response, std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request)> lambda) {
-
+	listener_server.resource["^/" + url + "$"][method] = lambda;
 }
 
 void Listener::StartServer() {
-	listener_server.start();
+	server_thread = std::thread([this]() {
+		listener_server.config.port = port;
+		listener_server.start();
+
+		//needs keep alive loop?
+	});
+	server_thread.detach();
 }
 
 void Listener::StopServer() {
