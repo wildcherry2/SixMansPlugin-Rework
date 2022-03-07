@@ -16,15 +16,18 @@ class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin/*, public BakkesM
 {
 
 	//std::shared_ptr<bool> enabled;
-
+	
 	//Boilerplate
 	virtual void onLoad();
 	virtual void onUnload();
-
+public:
 	LogSys logsys;
+	SixMansPlugin() {};
+	SixMansPlugin(SixMansPlugin& plugin) {}
 	//SimpleWeb::Server<SimpleWeb::HTTP> listener_server;
 
-	int server_port = 6969;
+	size_t server_port = 6969;
+	
 
 	// Inherited via PluginSettingsWindow
 	/*
