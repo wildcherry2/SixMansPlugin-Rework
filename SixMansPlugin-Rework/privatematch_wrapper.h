@@ -11,6 +11,8 @@ private:
 	std::string pass;
 	Region region;
 
+	double retry_delay = 0.0;
+
 public:
 	PrivateMatch();
 	PrivateMatch(std::string name, std::string pass);

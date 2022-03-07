@@ -12,6 +12,8 @@
 #include <thread>
 #include <fstream>
 #include <iostream>
+#include <ctime>
+#include <chrono>
 
 #include "imgui/imgui.h"
 

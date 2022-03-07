@@ -70,5 +70,11 @@ void PrivateMatch::MakeMatch(std::string name, std::string pass) {
 }
 
 void PrivateMatch::Retry() {
-
+	//auto gameWrapper = self_ref->gameWrapper;
+	self_ref->gameWrapper->SetTimeout([this](GameWrapper* gw) {
+		matchmaking_wrapper->JoinPrivateMatch(name, pass);
+		if (!self_ref->gameWrapper->IsInOnlineGame()) {
+			Retry();
+		}
+	}, retry_delay);
 }

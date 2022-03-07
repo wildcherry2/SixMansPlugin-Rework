@@ -10,6 +10,8 @@
 #include "logsys.h"
 #include "server.h"
 #include "settings.h"
+#include "privatematch_wrapper.h"
+#include "timer.h"
 constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
 
 
