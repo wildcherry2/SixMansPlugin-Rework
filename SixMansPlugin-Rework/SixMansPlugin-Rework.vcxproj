@@ -114,6 +114,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="server.cpp" />
+    <ClCompile Include="settings.cpp" />
     <ClCompile Include="SixMansPlugin-Rework.cpp" />
     <ClCompile Include="SixMansPlugin-ReworkGUI.cpp" />
   </ItemGroup>
@@ -135,6 +136,7 @@
     <ClInclude Include="logsys.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="server.h" />
+    <ClInclude Include="settings.h" />
     <ClInclude Include="SixMansPlugin-Rework.h" />
     <ClInclude Include="version.h" />
   </ItemGroup>

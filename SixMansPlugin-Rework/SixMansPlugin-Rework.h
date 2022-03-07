@@ -9,6 +9,7 @@
 #include "consts.h"
 #include "logsys.h"
 #include "server.h"
+#include "settings.h"
 constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
 
 

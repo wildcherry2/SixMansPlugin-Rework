@@ -15,17 +15,9 @@ std::thread server_thread;
 void SixMansPlugin::onLoad()
 {
 	_globalCvarManager = cvarManager;
-
-	logsys = LogSys(gameWrapper->GetDataFolder() / "SixMansPlugin");
-
-	//ggw = &gameWrapper;
-
-	Listener s(2020);
-
-	//srv.plugin->logsys;
 	self_ref = this;
-	//NewCvar("server_port", std::to_string(server_port));
-	
+	logsys = LogSys(gameWrapper->GetDataFolder() / "SixMansPlugin");
+	Listener s(2020);
 }
 
 void SixMansPlugin::onUnload()

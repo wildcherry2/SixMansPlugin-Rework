@@ -8,6 +8,7 @@ extern std::thread server_thread;
 
 Listener::Listener(size_t port) {
 	this->port = port;
+	self_ref->cvarManager->log("Listener initialized");
 }
 
 void Listener::AddResource(std::string& url, std::string& method, std::function<void(std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Response> response, std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request)> lambda) {
