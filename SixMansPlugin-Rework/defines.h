@@ -20,4 +20,6 @@
 #define gwrap gameWrapper
 #define Timeout(lambda_func, time) gwrap->SetTimeout([this](GameWrapper* gw) lambda_func, time)
 
+#define nullcheck(ptr) if(ptr == nullptr){ LOG("Null pointer!"); return; }
+
 #endif

@@ -113,6 +113,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="privatematch_wrapper.cpp" />
     <ClCompile Include="server.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="SixMansPlugin-Rework.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="logsys.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="privatematch_wrapper.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="SixMansPlugin-Rework.h" />

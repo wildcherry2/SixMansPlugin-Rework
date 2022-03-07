@@ -87,6 +87,9 @@
     <ClCompile Include="settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="privatematch_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SixMansPlugin-Rework.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="privatematch_wrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
