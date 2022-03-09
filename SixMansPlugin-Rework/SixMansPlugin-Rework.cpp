@@ -16,8 +16,9 @@ void SixMansPlugin::onLoad()
 {
 	_globalCvarManager = cvarManager;
 	self_ref = this;
-	logsys = LogSys(gameWrapper->GetDataFolder() / "SixMansPlugin");
-	Listener s(2020);
+
+	//AVar(int, mint, 5, "mint", { return; });
+
 }
 
 void SixMansPlugin::onUnload()

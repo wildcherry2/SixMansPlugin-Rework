@@ -91,4 +91,5 @@ static const char* REGION_NAMES[10] = {
 	"South America (SAM)"
 };
 
+static const std::string str_typename = "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >"; //may not need the space
 #endif

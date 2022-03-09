@@ -14,6 +14,7 @@
 #include <iostream>
 #include <ctime>
 #include <chrono>
+#include <typeinfo>
 
 #include "imgui/imgui.h"
 

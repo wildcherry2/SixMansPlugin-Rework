@@ -4,10 +4,15 @@
 #ifndef DEFINES
 #define DEFINES
 
+//	Casters and converters
+#define cast(type, var) reinterpret_cast<type>(var)
+#define str(val) std::to_string(val)
+
 //	Cvar manager helpers
-#define cm cvarManager
+#define cm _globalCvarManager
 #define RegCvar cm->registerCvar
 #define NewCvar(name, default_value) RegCvar(name, default_value, "")
+#define NewAutoCvar(name, default_value, lambda) NewCvar(name, default_value).addOnValueChanged([this](std::string old, CVarWrapper new_cvar)lambda)
 #define GetCvar(name) cm->getCvar(name)
 #define SetCvar(name, value) cm->getCvar(name).setValue(value)
 #define NewTNotifier(name, lambda_func) cm->registerNotifier(name, [this] (std::vector<std::string> params) lambda_func, "", PERMISSION_ALL)		//For member notifiers
@@ -15,11 +20,15 @@
 
 //	Declare a variable and register it as a cvar, cname is the in-console name (string), no need to add the "s_" yourself
 #define Var(type, identifier, value, cname) type identifier = value; NewCvar("s_" + std::string(cname), "")
+//#define AVar(type, identifier, value, cname, lambda) type identifier = value; NewAutoCvar("s_" + std::string(cname), typeid(identifier).name() == str_typename ? std::string(value) : str(value), lambda)
+//#define clvar(identifier, value, cname) 
 
 //	Gamewrapper helpers
 #define gwrap gameWrapper
 #define Timeout(lambda_func, time) gwrap->SetTimeout([this](GameWrapper* gw) lambda_func, time)
 
+//	Debugging
 #define nullcheck(ptr) if(ptr == nullptr){ LOG("Null pointer!"); return; }
+#define pprint(ptr) cm->log(str(cast(uintptr_t, ptr)))
 
 #endif
