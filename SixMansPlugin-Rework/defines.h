@@ -9,9 +9,9 @@
 #define str(val) std::to_string(val)
 
 //	Cvar manager helpers
-#define cm _globalCvarManager
+#define cm self_ref->cvarManager
 #define RegCvar cm->registerCvar
-#define NewCvar(name, default_value) RegCvar(name, default_value, "")
+#define NewCvar(name, default_value) RegCvar(std::string("s_") + name, default_value, "")
 #define NewAutoCvar(name, default_value, lambda) NewCvar(name, default_value).addOnValueChanged([this](std::string old, CVarWrapper new_cvar)lambda)
 #define GetCvar(name) cm->getCvar(name)
 #define SetCvar(name, value) cm->getCvar(name).setValue(value)
@@ -20,6 +20,8 @@
 
 //	Declare a variable and register it as a cvar, cname is the in-console name (string), no need to add the "s_" yourself
 #define Var(type, identifier, value, cname) type identifier = value; NewCvar("s_" + std::string(cname), "")
+#define MVar(member, name, value, conversion_func) NewAutoCvar(name, value, {member = conversion_func(new_cvar.getStringValue());})
+
 //#define AVar(type, identifier, value, cname, lambda) type identifier = value; NewAutoCvar("s_" + std::string(cname), typeid(identifier).name() == str_typename ? std::string(value) : str(value), lambda)
 //#define clvar(identifier, value, cname) 
 
@@ -30,5 +32,7 @@
 //	Debugging
 #define nullcheck(ptr) if(ptr == nullptr){ LOG("Null pointer!"); return; }
 #define pprint(ptr) cm->log(str(cast(uintptr_t, ptr)))
+
+#define externs extern std::shared_ptr<CVarManagerWrapper> _globalCvarManager; extern SixMansPlugin* self_ref; extern std::shared_ptr<GameWrapper>* ggw; extern std::thread server_thread;
 
 #endif

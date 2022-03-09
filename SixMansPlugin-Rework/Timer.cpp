@@ -3,7 +3,7 @@
 #include "SixMansPlugin-Rework.h"
 #include "timer.h"
 
-extern SixMansPlugin* self_ref;
+externs;
 
 void Timer::StartTimer() {
 	countdown_startpoint = clock() / CLOCKS_PER_SEC;
@@ -21,4 +21,10 @@ double Timer::GetTimePassed() {
 
 void Timer::Tick() {
 	countdown_time = clock() / CLOCKS_PER_SEC;
+}
+
+void Timer::InitCvars() {
+	NewAutoCvar("countdown_startpoint", str(countdown_startpoint), { countdown_startpoint = std::stol(new_cvar.getStringValue()); });
+	NewAutoCvar("countdown_time", str(countdown_time), { countdown_time = std::stol(new_cvar.getStringValue()); });
+	cm->log("Timer cvars initialized!");
 }

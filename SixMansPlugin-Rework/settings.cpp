@@ -3,7 +3,7 @@
 #include "settings.h"
 #include "SixMansPlugin-Rework.h"
 
-extern SixMansPlugin* self_ref;
+externs;
 
 Settings::Settings() {
 	if (std::filesystem::exists(settings_path)) {

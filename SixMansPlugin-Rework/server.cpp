@@ -3,8 +3,7 @@
 #include "server.h"
 #include "SixMansPlugin-Rework.h"
 
-extern SixMansPlugin* self_ref;
-extern std::thread server_thread;
+externs;
 
 Listener::Listener(size_t port) {
 	this->port = port;
@@ -25,4 +24,9 @@ void Listener::StartServer() {
 
 void Listener::StopServer() {
 	listener_server.stop();
+}
+
+void Listener::InitCvars() {
+	NewAutoCvar("port", str(port), { port = new_cvar.getIntValue(); });
+	cm->log("Server cvars initialized!");
 }

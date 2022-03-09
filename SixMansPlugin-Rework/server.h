@@ -16,4 +16,13 @@ public:
 	unsigned int GetPort() { return port; }
 	void StartServer();
 	void StopServer();
+
+	void InitCvars();
 };
+
+#ifndef SERVER_DEFINES
+#define SERVER_DEFINES
+
+#define SERVER_port GetCvar("s_port")
+
+#endif

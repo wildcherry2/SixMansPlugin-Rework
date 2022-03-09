@@ -13,4 +13,13 @@ public:
 	void StopTimer();
 	double GetTimePassed();
 	void Tick();
+	void InitCvars();
 };
+
+#ifndef TIMER_DEFINES
+#define TIMER_DEFINES
+
+#define TIMER_countdown_time GetCvar("countdown_time")
+#define TIMER_countdown_startpoint GetCvar("countdown_startpoint")
+
+#endif
