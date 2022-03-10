@@ -9,14 +9,15 @@
 #define str(val) std::to_string(val)
 
 //	Cvar manager helpers
-#define cm self_ref->cvarManager
+#define cm _globalCvarManager
+//#define gcm _globalCvarManager
 #define RegCvar cm->registerCvar
 #define NewCvar(name, default_value) RegCvar(std::string("s_") + name, default_value, "")
 #define NewAutoCvar(name, default_value, lambda) NewCvar(name, default_value).addOnValueChanged([this](std::string old, CVarWrapper new_cvar)lambda)
 #define GetCvar(name) cm->getCvar(name)
 #define SetCvar(name, value) cm->getCvar(name).setValue(value)
-#define NewTNotifier(name, lambda_func) cm->registerNotifier(name, [this] (std::vector<std::string> params) lambda_func, "", PERMISSION_ALL)		//For member notifiers
-#define NewGNotifier(name, lambda_func) cm->registerNotifier(name, [&] (std::vector<std::string> params) lambda_func, "", PERMISSION_ALL)		//For global notifiers
+#define NewTNotifier(name, lambda_func) cm->registerNotifier(std::string("sf_") + name, [this] (std::vector<std::string> params) lambda_func, "", PERMISSION_ALL)		//For member notifiers
+#define NewGNotifier(name, lambda_func) cm->registerNotifier(std::string("sf_") + name, [&] (std::vector<std::string> params) lambda_func, "", PERMISSION_ALL)		//For global notifiers
 
 //	Declare a variable and register it as a cvar, cname is the in-console name (string), no need to add the "s_" yourself
 #define Var(type, identifier, value, cname) type identifier = value; NewCvar("s_" + std::string(cname), "")

@@ -10,13 +10,9 @@ private:
 	std::shared_ptr<CustomMatchTeamSettings> orange_settings;
 	std::string name;
 	std::string pass;
-	int region;
-	double retry_delay = 0.0;
+	size_t region;
+	float retry_delay = 0.0;
 	PrivateMatch(std::string name, std::string pass);
-	//pvar<std::string> name = pvar<std::string>::pvar("","name");
-	//pvar<std::string> pass = pvar<std::string>::pvar("", "pass");
-	//pvar<Region> region = pvar<Region>::pvar(Region::USE, "region");
-
 
 public:
 	PrivateMatch();
@@ -28,6 +24,14 @@ public:
 	void MakeMatch(std::string name, std::string pass);
 	void Retry();
 	void InitCvars();
+	std::string& GetName() { return name; }
+	std::string& GetPass() { return pass; }
+	size_t& GetRegion() { return region; }
+	float& GetRetryDelay() { return retry_delay; }
+	void SetName(std::string name) { this->name = name; SetCvar("s_name", name); }
+	void SetPass(std::string pass) { this->pass = pass; SetCvar("s_pass", pass); }
+	void SetRegion(size_t region) { this->region = region; SetCvar("s_region", (int)region); }
+	void SetRetryDelay(float retry_delay) { this->retry_delay = retry_delay; SetCvar("s_retry_delay", retry_delay); }
 };
 
 #ifndef PRIVATEMATCH_DEFINES

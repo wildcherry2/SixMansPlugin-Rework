@@ -19,6 +19,15 @@ void SixMansPlugin::onLoad()
 
 	//CVarWrapper
 	match = PrivateMatch::GetInstance();
+	match->SetName("test");
+	match->SetPass("test");
+	match->SetRegion(0);
+	NewTNotifier("create", {
+		match->MakeMatch();
+	});
+	NewTNotifier("join", {
+		match->JoinMatch("test3","test3");
+	});
 	//match->GetInstance();
 	//AVar(int, mint, 5, "mint", { return; });
 

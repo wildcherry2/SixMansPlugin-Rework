@@ -5,6 +5,7 @@
 
 externs;
 
+//	UNIT TEST PASSED
 PrivateMatch::PrivateMatch() {
 	this->name = "";
 	this->pass = "";
@@ -13,6 +14,7 @@ PrivateMatch::PrivateMatch() {
 	this->orange_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->blue_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->matchmaking_wrapper = std::make_shared<MatchmakingWrapper>(self_ref->gameWrapper->GetMatchmakingWrapper());
+	match_settings->MapName = "Park_P";
 	InitCvars();
 }
 
@@ -23,6 +25,7 @@ PrivateMatch::PrivateMatch(std::string name, std::string pass) {
 	this->match_settings = std::make_shared<CustomMatchSettings>();
 	this->orange_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->blue_settings = std::make_shared<CustomMatchTeamSettings>();
+	match_settings->MapName = "Park_P";
 
 	nullcheck(self_ref->gameWrapper);
 	this->matchmaking_wrapper = std::make_shared<MatchmakingWrapper>(self_ref->gameWrapper->GetMatchmakingWrapper());
@@ -30,6 +33,7 @@ PrivateMatch::PrivateMatch(std::string name, std::string pass) {
 	InitCvars();
 }
 
+// UNIT TEST PASSED
 void PrivateMatch::JoinMatch() {
 	nullcheck(matchmaking_wrapper);
 	matchmaking_wrapper->JoinPrivateMatch(name, pass);
@@ -42,6 +46,7 @@ void PrivateMatch::JoinMatch(std::string name, std::string pass) {
 	matchmaking_wrapper->JoinPrivateMatch(this->name, this->pass);
 }
 
+// UNIT TEST PASSED
 void PrivateMatch::MakeMatch() {
 	nullcheck(matchmaking_wrapper);
 	match_settings->ServerName = name;
@@ -55,6 +60,7 @@ void PrivateMatch::MakeMatch() {
 	matchmaking_wrapper->CreatePrivateMatch((Region)region, *match_settings);
 }
 
+// UNIT TEST PASSED
 void PrivateMatch::MakeMatch(std::string name, std::string pass) {
 	nullcheck(matchmaking_wrapper);
 
@@ -68,12 +74,12 @@ void PrivateMatch::MakeMatch(std::string name, std::string pass) {
 	match_settings->bPartyMembersOnly = false;
 	match_settings->BlueTeamSettings = *blue_settings;
 	match_settings->OrangeTeamSettings = *orange_settings;
+	
 
 	matchmaking_wrapper->CreatePrivateMatch((Region)this->region, *match_settings);
 }
 
 void PrivateMatch::Retry() {
-	//auto gameWrapper = self_ref->gameWrapper;
 	self_ref->gameWrapper->SetTimeout([this](GameWrapper* gw) {
 		matchmaking_wrapper->JoinPrivateMatch(name, pass);
 		if (!self_ref->gameWrapper->IsInOnlineGame()) {
@@ -82,17 +88,13 @@ void PrivateMatch::Retry() {
 	}, retry_delay);
 }
 
+//UNIT TEST PASSED
 void PrivateMatch::InitCvars() {
-	/*MVar(name, "name", "", std::string);
-	MVar(pass, "pass", "", std::string);
-	MVar(region, "region", 0, std::stoi);*/
-
-	//cm->registerCvar("test", "");
-
 	NewAutoCvar("name", name, { name = new_cvar.getStringValue(); });
 	NewAutoCvar("pass", pass, { pass = new_cvar.getStringValue(); });
 	NewAutoCvar("region", str(region), {region = new_cvar.getIntValue();});
 	NewAutoCvar("retry_delay", str(retry_delay), { retry_delay = new_cvar.getFloatValue(); });
+
 	cm->log("Private match cvars registered!");
 }
 
