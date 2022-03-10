@@ -43,3 +43,5 @@ void Settings::SaveConfig(const std::vector<std::string> cvars) {
 	os << settings_file;
 	os.close();
 }
+
+std::shared_ptr<Settings> Settings::singleton = nullptr;

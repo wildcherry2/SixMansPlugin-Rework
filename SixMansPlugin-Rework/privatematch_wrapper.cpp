@@ -95,3 +95,5 @@ void PrivateMatch::InitCvars() {
 	NewAutoCvar("retry_delay", str(retry_delay), { retry_delay = new_cvar.getFloatValue(); });
 	cm->log("Private match cvars registered!");
 }
+
+std::shared_ptr<PrivateMatch> PrivateMatch::singleton = nullptr;

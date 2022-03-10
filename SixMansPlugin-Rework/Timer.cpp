@@ -26,5 +26,8 @@ void Timer::Tick() {
 void Timer::InitCvars() {
 	NewAutoCvar("countdown_startpoint", str(countdown_startpoint), { countdown_startpoint = std::stol(new_cvar.getStringValue()); });
 	NewAutoCvar("countdown_time", str(countdown_time), { countdown_time = std::stol(new_cvar.getStringValue()); });
+	NewAutoCvar("countdown_amount", str(countdown_amount), { countdown_amount = new_cvar.getFloatValue(); });
 	cm->log("Timer cvars initialized!");
 }
+
+std::shared_ptr<Timer> Timer::singleton = nullptr;

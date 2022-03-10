@@ -24,7 +24,7 @@ class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin/*, public BakkesM
 	virtual void onUnload();
 public:
 	
-	PrivateMatch* match = nullptr;
+	std::shared_ptr<PrivateMatch> match = nullptr;
 
 
 	// Inherited via PluginSettingsWindow

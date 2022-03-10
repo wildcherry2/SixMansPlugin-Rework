@@ -30,3 +30,5 @@ void Listener::InitCvars() {
 	NewAutoCvar("port", str(port), { port = new_cvar.getIntValue(); });
 	cm->log("Server cvars initialized!");
 }
+
+std::shared_ptr<Listener> Listener::singleton = nullptr;

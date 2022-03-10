@@ -23,3 +23,5 @@ void LogSys::Log(std::string& str) {
 
 	//insert imgui shit
 }
+
+std::shared_ptr<LogSys> LogSys::singleton = nullptr;
