@@ -10,11 +10,15 @@ LogSys::LogSys(std::filesystem::path folder) {
 }
 
 void LogSys::SpawnConsole() {
-	//insert imgui shit
+	AllocConsole();
+	SetConsoleTitle(L"[+] RLMod");
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+	freopen("CONIN$", "r", stdin);
 }
 
 void LogSys::DestroyConsole() {
-	//insert imgui shit
+	FreeConsole();
 }
 
 void LogSys::Log(std::string& str) {

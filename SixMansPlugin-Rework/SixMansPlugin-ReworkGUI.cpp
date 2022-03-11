@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "SixMansPlugin-Rework.h"
 
-/* Plugin Settings Window code here
+//Plugin Settings Window code here
 std::string SixMansPlugin::GetPluginName() {
 	return "SixMansPlugin";
 }
@@ -15,11 +15,11 @@ void SixMansPlugin::SetImGuiContext(uintptr_t ctx) {
 // This will show up in bakkesmod when the plugin is loaded at
 //  f2 -> plugins -> SixMansPlugin-Rework
 void SixMansPlugin::RenderSettings() {
-	ImGui::TextUnformatted("SixMansPlugin-Rework plugin settings");
+	ImGui::TextUnformatted("SixMansPlugin settings");
 }
-*/
 
-/*
+
+
 // Do ImGui rendering here
 void SixMansPlugin::Render()
 {
@@ -41,7 +41,7 @@ void SixMansPlugin::Render()
 // Name of the menu that is used to toggle the window.
 std::string SixMansPluginGetMenuName()
 {
-	return "SixMansPlugin-Rework";
+	return "SixMansPlugin";
 }
 
 // Title to give the menu
@@ -79,4 +79,4 @@ void SixMansPlugin::OnClose()
 {
 	isWindowOpen_ = false;
 }
-*/
+

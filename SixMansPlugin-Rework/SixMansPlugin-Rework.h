@@ -18,24 +18,24 @@
 constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
 
 
-class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin/*, public BakkesMod::Plugin::PluginSettingsWindow*//*, public BakkesMod::Plugin::PluginWindow*/{	
+class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow, public BakkesMod::Plugin::PluginWindow{	
 	//Boilerplate
 	virtual void onLoad();
 	virtual void onUnload();
 public:
-	
 	std::shared_ptr<PrivateMatch> match = nullptr;
+	std::shared_ptr<Listener> server = nullptr;
 
 
 	// Inherited via PluginSettingsWindow
-	/*
+	
 	void RenderSettings() override;
 	std::string GetPluginName() override;
 	void SetImGuiContext(uintptr_t ctx) override;
-	*/
+	
 
 	// Inherited via PluginWindow
-	/*
+	
 
 	bool isWindowOpen_ = false;
 	bool isMinimized_ = false;
@@ -50,5 +50,5 @@ public:
 	virtual void OnOpen() override;
 	virtual void OnClose() override;
 	
-	*/
+	
 };

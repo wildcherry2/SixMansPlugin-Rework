@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "defines.h"
 
 class Listener {
 private:
@@ -13,8 +14,8 @@ public:
 	Listener() {};
 	
 	static std::shared_ptr<Listener> GetInstance() { singleton == nullptr ? singleton = std::make_shared<Listener>() : NULL; return singleton; }
-	void AddResource(std::string& url, std::string& method, std::function<void(std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Response> response, std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request)> lambda);
-	void SetPort(unsigned int port) { this->port = port; }
+	void AddResources();
+	void SetPort(unsigned int port) { this->port = port; SetCvar("s_port", (int)port); }
 	unsigned int GetPort() { return port; }
 	void StartServer();
 	void StopServer();

@@ -94,6 +94,7 @@ void PrivateMatch::InitCvars() {
 	NewAutoCvar("pass", pass, { pass = new_cvar.getStringValue(); });
 	NewAutoCvar("region", str(region), {region = new_cvar.getIntValue();});
 	NewAutoCvar("retry_delay", str(retry_delay), { retry_delay = new_cvar.getFloatValue(); });
+	NewAutoCvar("state_join", str(state_join), { state_join = new_cvar.getBoolValue(); });
 
 	cm->log("Private match cvars registered!");
 }

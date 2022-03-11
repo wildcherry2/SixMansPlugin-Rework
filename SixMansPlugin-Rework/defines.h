@@ -10,7 +10,6 @@
 
 //	Cvar manager helpers
 #define cm _globalCvarManager
-//#define gcm _globalCvarManager
 #define RegCvar cm->registerCvar
 #define NewCvar(name, default_value) RegCvar(std::string("s_") + name, default_value, "")
 #define NewAutoCvar(name, default_value, lambda) NewCvar(name, default_value).addOnValueChanged([this](std::string old, CVarWrapper new_cvar)lambda)
@@ -22,9 +21,6 @@
 //	Declare a variable and register it as a cvar, cname is the in-console name (string), no need to add the "s_" yourself
 #define Var(type, identifier, value, cname) type identifier = value; NewCvar("s_" + std::string(cname), "")
 #define MVar(member, name, value, conversion_func) NewAutoCvar(name, value, {member = conversion_func(new_cvar.getStringValue());})
-
-//#define AVar(type, identifier, value, cname, lambda) type identifier = value; NewAutoCvar("s_" + std::string(cname), typeid(identifier).name() == str_typename ? std::string(value) : str(value), lambda)
-//#define clvar(identifier, value, cname) 
 
 //	Gamewrapper helpers
 #define gwrap gameWrapper

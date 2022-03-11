@@ -12,6 +12,7 @@ private:
 	std::string pass;
 	size_t region;
 	float retry_delay = 0.0;
+	bool state_join = true;
 	PrivateMatch(std::string name, std::string pass);
 
 public:
@@ -41,5 +42,6 @@ public:
 #define PM_pass GetCvar("s_pass").getStringValue()
 #define PM_region GetCvar("s_region").getIntValue()
 #define PM_retry_delay GetCvar("s_retry_delay").getFloatValue()
+#define PM_state_join GetCvar("s_state_join").getBoolValue()
 
 #endif

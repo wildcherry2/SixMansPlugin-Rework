@@ -17,22 +17,15 @@ void SixMansPlugin::onLoad()
 	_globalCvarManager = cvarManager;
 	self_ref = this;
 
-	//CVarWrapper
 	match = PrivateMatch::GetInstance();
-	match->SetName("test");
-	match->SetPass("test");
-	match->SetRegion(0);
-	NewTNotifier("create", {
-		match->MakeMatch();
-	});
-	NewTNotifier("join", {
-		match->JoinMatch("test3","test3");
-	});
-	//match->GetInstance();
-	//AVar(int, mint, 5, "mint", { return; });
+	server = Listener::GetInstance();
+
+	server->StartServer();
 
 }
 
 void SixMansPlugin::onUnload()
 {
+	server->StopServer();
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
