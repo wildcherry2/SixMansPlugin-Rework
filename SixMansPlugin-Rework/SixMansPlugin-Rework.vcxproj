@@ -108,6 +108,7 @@
     <ClCompile Include="imgui\imgui_searchablecombo.cpp" />
     <ClCompile Include="imgui\imgui_timeline.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="im_settings.cpp" />
     <ClCompile Include="logsys.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -115,7 +116,6 @@
     </ClCompile>
     <ClCompile Include="privatematch_wrapper.cpp" />
     <ClCompile Include="server.cpp" />
-    <ClCompile Include="settings.cpp" />
     <ClCompile Include="SixMansPlugin-Rework.cpp" />
     <ClCompile Include="SixMansPlugin-ReworkGUI.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -135,11 +135,11 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="im_settings.h" />
     <ClInclude Include="logsys.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="privatematch_wrapper.h" />
     <ClInclude Include="server.h" />
-    <ClInclude Include="settings.h" />
     <ClInclude Include="SixMansPlugin-Rework.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="version.h" />

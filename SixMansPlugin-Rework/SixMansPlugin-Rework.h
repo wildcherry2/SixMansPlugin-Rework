@@ -11,20 +11,22 @@
 //#include "plugin_varable.h"
 #include "logsys.h"
 #include "server.h"
-#include "settings.h"
+//#include "settings.h"
 #include "privatematch_wrapper.h"
 #include "timer.h"
+#include "im_settings.h"
 
 constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH) "." stringify(VERSION_BUILD);
 
 
-class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow, public BakkesMod::Plugin::PluginWindow{	
+class SixMansPlugin: public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow/*, public BakkesMod::Plugin::PluginWindow*/{	
 	//Boilerplate
 	virtual void onLoad();
 	virtual void onUnload();
 public:
 	std::shared_ptr<PrivateMatch> match = nullptr;
 	std::shared_ptr<Listener> server = nullptr;
+	std::shared_ptr<SettingsTab> settings = nullptr;
 
 
 	// Inherited via PluginSettingsWindow
@@ -37,7 +39,7 @@ public:
 	// Inherited via PluginWindow
 	
 
-	bool isWindowOpen_ = false;
+	/*bool isWindowOpen_ = false;
 	bool isMinimized_ = false;
 	std::string menuTitle_ = "SixMansPlugin-Rework";
 
@@ -48,7 +50,7 @@ public:
 	virtual bool ShouldBlockInput() override;
 	virtual bool IsActiveOverlay() override;
 	virtual void OnOpen() override;
-	virtual void OnClose() override;
+	virtual void OnClose() override;*/
 	
 	
 };

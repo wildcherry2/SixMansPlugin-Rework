@@ -10,12 +10,13 @@ Listener::Listener(size_t port) {
 	cm->log("[Server] Listener initialized");
 }
 
+// UNIT TEST PASSED
 void Listener::AddResources() {
 	listener_server.on_error = [this](std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request, const SimpleWeb::error_code& ec) {
 		//cm->log("[Server] Server error occurred! Probably a request to stop the server.");
 	};
 
-	//URL syntax: localhost:[port]/match?event=[eventcode]?name=[listener_servername]?pass=[listener_serverpass]?region=[listener_serverregion]
+	//UNIT TEST PASSED
 	//Example: http://localhost:6969/match?event=0&name=b1234&pass=h1jk&region=0
 	listener_server.resource["^/match$"]["GET"] = [this](std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Response> response, std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request) {
 		cm->log("[Server] Request received...");
@@ -41,6 +42,7 @@ void Listener::AddResources() {
 		if (is_autojoin_enabled) gameWrapper->Execute([this](GameWrapper* gw) {cm->executeCommand("openmenu SixMansPluginInterface"); cm->executeCommand("6mReady"); });*/
 	};
 
+	//UNIT TEST PASSED
 	//URL syntax: localhost:[port]/halt
 	//stops listener_server, closing the thread
 	listener_server.resource["^/halt$"]["GET"] = [this](std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Response> response, std::shared_ptr<SimpleWeb::Server<SimpleWeb::HTTP>::Request> request) {
@@ -55,6 +57,7 @@ void Listener::AddResources() {
 	};
 }
 
+//UNIT TEST PASSED
 void Listener::StartServer() {
 	cm->log("[Server] Starting server...");
 	server_thread = std::thread([this]() {
@@ -65,11 +68,13 @@ void Listener::StartServer() {
 	server_thread.detach();
 }
 
+//UNIT TEST PASSED
 void Listener::StopServer() {
 	cm->log("[Server] Stopping server...");
 	listener_server.stop();
 }
 
+//UNIT TEST PASSED
 void Listener::InitCvars() {
 	NewAutoCvar("port", str(port), { port = new_cvar.getIntValue(); });
 	cm->log("[Server] Server cvars initialized!");

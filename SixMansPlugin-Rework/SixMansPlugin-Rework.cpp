@@ -19,6 +19,9 @@ void SixMansPlugin::onLoad()
 
 	match = PrivateMatch::GetInstance();
 	server = Listener::GetInstance();
+	settings = SettingsTab::GetInstance();
+
+	//settings->SetPort(&server->GetPort())
 
 	server->StartServer();
 
