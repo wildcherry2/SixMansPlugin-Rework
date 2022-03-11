@@ -12,16 +12,18 @@ std::shared_ptr<GameWrapper>* ggw;
 SixMansPlugin* self_ref;
 std::thread server_thread;
 
+//need to make sure default constructors init cvars
 void SixMansPlugin::onLoad()
 {
 	_globalCvarManager = cvarManager;
 	self_ref = this;
+	
 
 	match = PrivateMatch::GetInstance();
 	server = Listener::GetInstance();
 	settings = SettingsTab::GetInstance();
 
-	//settings->SetPort(&server->GetPort())
+	
 
 	server->StartServer();
 

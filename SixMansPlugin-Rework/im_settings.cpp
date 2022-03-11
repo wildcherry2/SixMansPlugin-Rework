@@ -16,7 +16,7 @@ SettingsTab::SettingsTab(float& retry_timer, unsigned int& port, size_t& region)
 }
 
 void SettingsTab::LoadCvars() {
-
+	config->LoadAllFromConfig();
 }
 
 void SettingsTab::InitCvars() {
@@ -33,7 +33,7 @@ void SettingsTab::InitCvars() {
 }
 
 void SettingsTab::SaveCvars() {
-
+	config->SaveAllToConfig();
 }
 
 void SettingsTab::Render() {

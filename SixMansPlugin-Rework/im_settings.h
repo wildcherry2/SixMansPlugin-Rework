@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "config.h"
 
 class SettingsTab {
 	static std::shared_ptr<SettingsTab> singleton;
@@ -13,7 +14,7 @@ class SettingsTab {
 	float* retry_timer;
 	unsigned int* port;
 	size_t* region;
-
+	std::shared_ptr<Config> config;
 
 
 	void CBModEnabled();
@@ -30,7 +31,7 @@ class SettingsTab {
 	void DPDWNRegion();
 
 public:
-	SettingsTab(){}
+	SettingsTab() { InitCvars(); config = std::make_shared<Config>(); }
 	SettingsTab(float& retry_timer, unsigned int& port, size_t& region);
 	void InitCvars();
 	void SaveCvars();
