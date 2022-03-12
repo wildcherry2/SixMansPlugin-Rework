@@ -15,7 +15,10 @@ void SixMansPlugin::SetImGuiContext(uintptr_t ctx) {
 // This will show up in bakkesmod when the plugin is loaded at
 //  f2 -> plugins -> SixMansPlugin-Rework
 void SixMansPlugin::RenderSettings() {
-	ImGui::TextUnformatted("SixMansPlugin settings");
+	//ImGui::TextUnformatted("SixMansPlugin settings");
+	if (settings != nullptr && match != nullptr) {
+		settings->Render();
+	}
 }
 
 

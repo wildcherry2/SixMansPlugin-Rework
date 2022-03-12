@@ -5,7 +5,7 @@
 class SettingsTab {
 	static std::shared_ptr<SettingsTab> singleton;
 	bool mod_enabled = true;
-	std::string map = "";
+	int map_selection_index = 0;
 	bool toast_enabled = true;
 	bool tab_in_enabled = true;
 	bool show_lobby_info_on_toast = false;
@@ -31,7 +31,7 @@ class SettingsTab {
 	void DPDWNRegion();
 
 public:
-	SettingsTab() { InitCvars(); config = std::make_shared<Config>(); }
+	SettingsTab() { InitCvars(); config = Config::GetInstance(); }
 	SettingsTab(float& retry_timer, unsigned int& port, size_t& region);
 	void InitCvars();
 	void SaveCvars();

@@ -10,6 +10,7 @@ private:
 	std::shared_ptr<CustomMatchTeamSettings> orange_settings;
 	std::string name;
 	std::string pass;
+	std::string map = "Park_P";
 	size_t region;
 	float retry_delay = 0.0;
 	bool state_join = true;
@@ -43,5 +44,6 @@ public:
 #define PM_region GetCvar("s_region").getIntValue()
 #define PM_retry_delay GetCvar("s_retry_delay").getFloatValue()
 #define PM_state_join GetCvar("s_state_join").getBoolValue()
+#define PM_map GetCvar("s_map").getStringValue();
 
 #endif

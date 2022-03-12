@@ -11,7 +11,7 @@ private:
 
 public:
 	
-	Listener() {};
+	Listener() { InitCvars(); };
 	
 	static std::shared_ptr<Listener> GetInstance() { singleton == nullptr ? singleton = std::make_shared<Listener>() : NULL; return singleton; }
 	void AddResources();

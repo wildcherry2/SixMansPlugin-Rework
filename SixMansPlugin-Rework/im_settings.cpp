@@ -13,10 +13,11 @@ SettingsTab::SettingsTab(float& retry_timer, unsigned int& port, size_t& region)
 	this->region = &region;
 
 	InitCvars();
+	config = Config::GetInstance();
 }
 
 void SettingsTab::LoadCvars() {
-	config->LoadAllFromConfig();
+	//config->LoadAllFromConfig();
 }
 
 void SettingsTab::InitCvars() {
@@ -27,13 +28,13 @@ void SettingsTab::InitCvars() {
 	NewAutoCvar("auto_join_after_link_clicked", str(automatically_join_after_link_clicked), { automatically_join_after_link_clicked = new_cvar.getBoolValue(); });
 	NewAutoCvar("auto_retry_after_join_fails", str(automatically_retry_after_join_fails), { automatically_retry_after_join_fails = new_cvar.getBoolValue(); });
 
-	NewAutoCvar("map", map, { map = new_cvar.getStringValue(); });
+	NewAutoCvar("map_selection_index", str(map_selection_index), { map_selection_index = new_cvar.getIntValue();});
 
 	LoadCvars();
 }
 
 void SettingsTab::SaveCvars() {
-	config->SaveAllToConfig();
+	//config->SaveAllToConfig();
 }
 
 void SettingsTab::Render() {
@@ -53,41 +54,77 @@ void SettingsTab::Render() {
 }
 
 void SettingsTab::CBModEnabled() {
-
+	auto cv = GetCvar("s_mod_enabled");
+	cnullcheck(cv);
+	if (ImGui::Checkbox("Enabled", &mod_enabled)) cv.setValue(mod_enabled);
 }
 
 void SettingsTab::CBToastEnabled() {
+	auto cv = GetCvar("s_toast_enabled");
+	cnullcheck(cv);
 
+	if (ImGui::Checkbox("Enable toasts", &toast_enabled)) cv.setValue(toast_enabled);
 }
 
 void SettingsTab::CBTabInEnabled() {
+	auto cv = GetCvar("s_tab_in_enabled");
+	cnullcheck(cv);
 
+	if (ImGui::Checkbox("Auto tab-in", &tab_in_enabled)) cv.setValue(tab_in_enabled);
 }
 
 void SettingsTab::CBShowLobbyInfoOnToast() {
+	auto cv = GetCvar("s_show_lobby_info_on_toast");
+	cnullcheck(cv);
 
+	if (ImGui::Checkbox("Show lobby info on toast", &show_lobby_info_on_toast)) cv.setValue(show_lobby_info_on_toast);
 }
 
 void SettingsTab::CBAutoJoinAfterLinkClicked() {
-
+	auto cv = GetCvar("s_auto_join_after_link_clicked");
+	cnullcheck(cv);
+	if (ImGui::Checkbox("Auto join", &automatically_join_after_link_clicked)) cv.setValue(automatically_join_after_link_clicked);
 }
 
 void SettingsTab::CBAutoRetryAfterJoinFails() {
+	auto cv = GetCvar("s_auto_retry_after_join_fails");
+	cnullcheck(cv);
 
+	if (ImGui::Checkbox("Auto reattempt joining", &automatically_retry_after_join_fails)) cv.setValue(automatically_retry_after_join_fails);
 }
 
 void SettingsTab::EntryRetryTimer() {
+	auto cv = GetCvar("s_retry_delay");
+	cnullcheck(cv);
 
+	float delay = cv.getFloatValue();
+	delay = delay >= 0.0 ? delay : 0;
+
+	if (ImGui::InputFloat("Retry delay (seconds)", &delay)) { cv.setValue(delay); }
 }
 
 void SettingsTab::EntryPort() {
+	auto cv = GetCvar("s_port");
+	cnullcheck(cv);
 
+	int port = cv.getIntValue();
+	port = port >= 0 && port < 10000 ? port : 0;
+
+	if (ImGui::InputInt("Listener port", &port)) { cv.setValue(port); }
 }
 
 void SettingsTab::DPDWNMap() {
+	auto cv = GetCvar("s_map_selection_index");
+	cnullcheck(cv);
 
+	if (ImGui::Combo("Map", &map_selection_index, MAP_NORMALNAMES, 35)) { cv.setValue(map_selection_index); GetCvar("s_map").setValue(MAP_CODENAMES[map_selection_index]); }
 }
 
 void SettingsTab::DPDWNRegion() {
+	auto cv = GetCvar("s_region");
+	cnullcheck(cv);
 
+	int region = cv.getIntValue();
+
+	if (ImGui::Combo("Region", &region, REGION_NAMES, 10)) { GetCvar("s_region").setValue(region); }
 }

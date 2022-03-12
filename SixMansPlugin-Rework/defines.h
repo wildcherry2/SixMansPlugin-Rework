@@ -28,6 +28,7 @@
 
 //	Debugging
 #define nullcheck(ptr) if(ptr == nullptr){ LOG("Null pointer!"); return; }
+#define cnullcheck(cv) if(cv.IsNull()) { cm->log(cv.getCVarName() + " is null!"); return;}
 #define pprint(ptr) cm->log(str(cast(uintptr_t, ptr)))
 
 #define externs extern std::shared_ptr<CVarManagerWrapper> _globalCvarManager; extern SixMansPlugin* self_ref; extern std::shared_ptr<GameWrapper>* ggw; extern std::thread server_thread;

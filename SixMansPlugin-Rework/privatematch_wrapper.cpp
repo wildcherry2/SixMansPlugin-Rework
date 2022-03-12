@@ -14,7 +14,7 @@ PrivateMatch::PrivateMatch() {
 	this->orange_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->blue_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->matchmaking_wrapper = std::make_shared<MatchmakingWrapper>(self_ref->gameWrapper->GetMatchmakingWrapper());
-	match_settings->MapName = "Park_P";
+	match_settings->MapName = map;
 	InitCvars();
 }
 
@@ -25,7 +25,7 @@ PrivateMatch::PrivateMatch(std::string name, std::string pass) {
 	this->match_settings = std::make_shared<CustomMatchSettings>();
 	this->orange_settings = std::make_shared<CustomMatchTeamSettings>();
 	this->blue_settings = std::make_shared<CustomMatchTeamSettings>();
-	match_settings->MapName = "Park_P";
+	match_settings->MapName = map;
 
 	nullcheck(self_ref->gameWrapper);
 	this->matchmaking_wrapper = std::make_shared<MatchmakingWrapper>(self_ref->gameWrapper->GetMatchmakingWrapper());
@@ -56,6 +56,7 @@ void PrivateMatch::MakeMatch() {
 	match_settings->bPartyMembersOnly = false;
 	match_settings->BlueTeamSettings = *blue_settings;
 	match_settings->OrangeTeamSettings = *orange_settings;
+	match_settings->MapName = map;
 
 	matchmaking_wrapper->CreatePrivateMatch((Region)region, *match_settings);
 }
@@ -74,6 +75,7 @@ void PrivateMatch::MakeMatch(std::string name, std::string pass) {
 	match_settings->bPartyMembersOnly = false;
 	match_settings->BlueTeamSettings = *blue_settings;
 	match_settings->OrangeTeamSettings = *orange_settings;
+	match_settings->MapName = map;
 	
 
 	matchmaking_wrapper->CreatePrivateMatch((Region)this->region, *match_settings);
@@ -95,6 +97,7 @@ void PrivateMatch::InitCvars() {
 	NewAutoCvar("region", str(region), {region = new_cvar.getIntValue();});
 	NewAutoCvar("retry_delay", str(retry_delay), { retry_delay = new_cvar.getFloatValue(); });
 	NewAutoCvar("state_join", str(state_join), { state_join = new_cvar.getBoolValue(); });
+	NewAutoCvar("map", map, { map = new_cvar.getStringValue(); });
 
 	cm->log("Private match cvars registered!");
 }

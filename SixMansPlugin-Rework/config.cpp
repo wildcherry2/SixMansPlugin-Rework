@@ -32,6 +32,7 @@ void Config::InitCvars() {
 }
 
 void Config::LoadAllFromConfig() {
+	if (!std::filesystem::exists(config_path)) return;
 	std::string builder = "";
 	std::string buff = "";
 	while (std::getline(stream, buff)) {
@@ -45,10 +46,12 @@ void Config::LoadAllFromConfig() {
 }
 
 void Config::LoadFromConfig(CVarWrapper& cvar) {
+	if (!std::filesystem::exists(config_path)) return;
 	SetCvar(cvar.getCVarName(), config_file[cvar.getCVarName()].get<std::string>());
 }
 
 void Config::LoadFromConfig(std::vector<CVarWrapper>& cvars) {
+	if (!std::filesystem::exists(config_path)) return;
 	for (auto it : cvars) {
 		SetCvar(it.getCVarName(), config_file[it.getCVarName()].get<std::string>());
 	}

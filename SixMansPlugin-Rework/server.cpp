@@ -7,6 +7,7 @@ externs;
 
 Listener::Listener(size_t port) {
 	this->port = port;
+	InitCvars();
 	cm->log("[Server] Listener initialized");
 }
 
