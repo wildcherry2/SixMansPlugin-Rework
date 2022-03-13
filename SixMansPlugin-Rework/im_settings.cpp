@@ -12,8 +12,9 @@ SettingsTab::SettingsTab(float& retry_timer, unsigned int& port, size_t& region)
 	this->port = &port;
 	this->region = &region;
 
-	InitCvars();
 	config = Config::GetInstance();
+	InitCvars();
+	
 }
 
 void SettingsTab::LoadCvars() {

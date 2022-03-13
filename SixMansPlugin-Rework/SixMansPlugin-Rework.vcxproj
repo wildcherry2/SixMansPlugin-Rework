@@ -120,6 +120,7 @@
     <ClCompile Include="SixMansPlugin-Rework.cpp" />
     <ClCompile Include="SixMansPlugin-ReworkGUI.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="toast.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="server.h" />
     <ClInclude Include="SixMansPlugin-Rework.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="toast.h" />
     <ClInclude Include="version.h" />
   </ItemGroup>
   <ItemGroup>

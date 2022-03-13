@@ -99,6 +99,15 @@ void PrivateMatch::InitCvars() {
 	NewAutoCvar("state_join", str(state_join), { state_join = new_cvar.getBoolValue(); });
 	NewAutoCvar("map", map, { map = new_cvar.getStringValue(); });
 
+	NewTNotifier("do_action", {
+		switch (GetCvar("s_state_join").getBoolValue()) {
+			case true:
+				JoinMatch();
+			case false:
+				MakeMatch();
+		}
+	});
+
 	cm->log("Private match cvars registered!");
 }
 
